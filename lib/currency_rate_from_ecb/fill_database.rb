@@ -3,18 +3,24 @@ require 'csv'
 require 'open-uri'
 require 'active_record'
 
-require_relative 'savefile.rb'
+require_relative 'save_file.rb'
 require_relative 'config/data_connection.rb'
+require_relative 'currency_rate_base.rb'
 
 module FillDatabase
-  class CurrencyRate < ActiveRecord::Base
-  end
-
-  a = CSV.read(File.join(File.dirname(__FILE__),'datafile.csv'))
-  CurrencyRate.create do |currency_rate|
-    a.each do |val|
-      currency_rate.date = val.first
-      currency_rate.rate = val.last.to_f
+  
+  def get_data_from_file
+    begin
+      data_array = CSV.read(File.join(File.dirname(__FILE__),'datafile.csv'), headers: true)
+    end
+    rescue
+      puts "Something went wrong.Error!"
+    end
+    CurrencyRateBase.create do |currency_rate|
+      data_array.each do |val|
+        currency_rate.date = val.first
+        currency_rate.rate = val.last.to_f
+      end
     end
   end
 end
