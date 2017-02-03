@@ -31,7 +31,6 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_dependency 'sqlite3'
-  spec.add_dependency 'open-uri'
   spec.add_dependency 'active_record'
   spec.add_dependency 'yaml'
 
