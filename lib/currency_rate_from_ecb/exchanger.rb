@@ -10,5 +10,4 @@ class Exchanger
     end
     arr
   end
-
 end
