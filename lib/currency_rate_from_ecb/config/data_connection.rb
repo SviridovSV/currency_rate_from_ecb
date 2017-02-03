@@ -1,3 +1,4 @@
+require 'yaml'
 module DataConnection
 
   dbconfig = YAML.load_file('config/database.yml')

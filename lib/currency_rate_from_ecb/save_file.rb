@@ -1,3 +1,4 @@
+require 'open-uri'
 module SaveFile
   def save_file_from_site
     uri = "https://sdw.ecb.europa.eu//quickviewexport.do?SERIES_KEY=120.EXR.D.USD.EUR.SP00.A&type=csv"
