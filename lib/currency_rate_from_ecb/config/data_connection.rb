@@ -1,8 +1,7 @@
-require 'yaml'
 require 'active_record'
 module DataConnection
 
-  dbconfig = YAML.load_file('database.yml')
-
-  ActiveRecord::Base.establish_connection(dbconfig)
+  ActiveRecord::Base.establish_connection(
+    adapter: "sqlite3",
+    database: "db/database.sqlite3")
 end
